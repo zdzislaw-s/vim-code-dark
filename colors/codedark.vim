@@ -93,11 +93,13 @@ let s:cdSelection = {'gui': '#264F78', 'cterm': s:cterm03, 'cterm256': '24'}
 let s:cdNonText = {'gui': '#5A5A5A', 'cterm': s:cterm04, 'cterm256': '71'}
 let s:cdLineNumber = {'gui': '#5A5A5A', 'cterm': s:cterm04, 'cterm256': '240'}
 
-let s:cdDiffRedDark = {'gui': '#4B1818', 'cterm': s:cterm08, 'cterm256': '52'}
-let s:cdDiffRedLight = {'gui': '#6F1313', 'cterm': s:cterm08, 'cterm256': '52'}
-let s:cdDiffRedLightLight = {'gui': '#FB0101', 'cterm': s:cterm08, 'cterm256': '09'}
-let s:cdDiffGreenDark = {'gui': '#373D29', 'cterm': s:cterm0B, 'cterm256': '237'}
-let s:cdDiffGreenLight = {'gui': '#4B5632', 'cterm': s:cterm09, 'cterm256': '58'}
+let s:cdDiffRedDark = {'gui': '#4B1818', 'cterm': s:cterm08, 'cterm256': '88'}
+let s:cdDiffRed = {'gui': '#4B1818', 'cterm': s:cterm08, 'cterm256': '124'}
+let s:cdDiffRedLight = {'gui': '#6F1313', 'cterm': s:cterm08, 'cterm256': '160'}
+let s:cdDiffRedLightLight = {'gui': '#FB0101', 'cterm': s:cterm08, 'cterm256': '196'}
+let s:cdDiffGreenLight = {'gui': '#4B5632', 'cterm': s:cterm09, 'cterm256': '40'}
+let s:cdDiffGreen = {'gui': '#373D29', 'cterm': s:cterm0B, 'cterm256': '34'}
+let s:cdDiffGreenDark = {'gui': '#373D29', 'cterm': s:cterm0B, 'cterm256': '28'}
 
 let s:cdSearchCurrent = {'gui': '#4B5632', 'cterm': s:cterm09, 'cterm256': '58'}
 let s:cdSearch = {'gui': '#264F78', 'cterm': s:cterm03, 'cterm256': '24'}
@@ -135,10 +137,10 @@ call <sid>hi('Cursor', s:cdCursorDark, s:cdCursorLight, 'none', {})
 call <sid>hi('CursorLine', {}, s:cdCursorDarkDark, 'none', {})
 call <sid>hi('CursorColumn', {}, s:cdCursorDarkDark, 'none', {})
 call <sid>hi('Directory', s:cdBlue, s:cdBack, 'none', {})
-call <sid>hi('DiffAdd', {}, s:cdDiffGreenDark, 'none', {})
-call <sid>hi('DiffChange', {}, s:cdDiffRedDark, 'none', {})
-call <sid>hi('DiffDelete', {}, s:cdDiffRedLight, 'none', {})
-call <sid>hi('DiffText', {}, s:cdDiffRedLight, 'none', {})
+call <sid>hi('DiffAdd', s:cdDiffGreen, s:cdCursorDarkDark, 'bold', {})
+call <sid>hi('DiffChange', s:cdFront, s:cdCursorDarkDark, 'none', {})
+call <sid>hi('DiffDelete', s:cdDiffRed, s:cdCursorDarkDark, 'none', {})
+call <sid>hi('DiffText', s:cdDiffRed, s:cdCursorDarkDark, 'bold', {})
 call <sid>hi('EndOfBuffer', s:cdLineNumber, s:cdBack, 'none', {})
 call <sid>hi('ErrorMsg', s:cdRed, s:cdBack, 'none', {})
 call <sid>hi('VertSplit', s:cdSplitDark, s:cdBack, 'none', {})
@@ -461,3 +463,12 @@ call <sid>hi('CTagsGlobalVariable', s:cdBlueGreen, {}, 'none', {})
 call <sid>hi('CTagsDefinedName ', s:cdBlue, {}, 'none', {})
 highlight def link CTagsFunction Function
 highlight def link CTagsMember Identifier
+
+" Diff:
+" Diff* highlights are defined by the colorscheme but the syntax file diff.vim
+" adds its own diff* highlights, try to link them together. The ones below are
+" not everything that diff.vim specifies but I did't see the others "in action"
+" yet.
+highlight def link diffAdded DiffAdd
+highlight def link diffChanged DiffChange
+highlight def link diffRemoved DiffDelete
