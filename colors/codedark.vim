@@ -161,9 +161,10 @@ call <sid>hi('PmenuThumb', {}, s:cdPopupFront, 'none', {})
 call <sid>hi('Question', s:cdBlue, s:cdBack, 'none', {})
 call <sid>hi('Search', s:cdNone, s:cdSearch, 'none', {})
 call <sid>hi('SpecialKey', s:cdBlue, s:cdNone, 'none', {})
-call <sid>hi('SpellBad', s:cdNone, s:cdNone, 'undercurl', {})
-call <sid>hi('SpellCap', s:cdNone, s:cdNone, 'undercurl', {})
-call <sid>hi('SpellLocal', s:cdNone, s:cdNone, 'undercurl', {})
+call <sid>hi('SpellBad', s:cdRed, s:cdBack, 'underline', {})
+call <sid>hi('SpellCap', s:cdRed, s:cdBack, 'underline', {})
+call <sid>hi('SpellRare', s:cdOrange, s:cdBack, 'underline', {})
+call <sid>hi('SpellLocal', s:cdOrange, s:cdBack, 'underline', {})
 call <sid>hi('StatusLine', s:cdFront, s:cdLeftMid, 'none', {})
 call <sid>hi('StatusLineNC', s:cdFront, s:cdLeftDark, 'none', {})
 call <sid>hi('TabLine', s:cdFront, s:cdTabOther, 'none', {})
@@ -220,11 +221,6 @@ call <sid>hi('Ignore', s:cdFront, {}, 'none', {})
 
 call <sid>hi('Error', s:cdRed, s:cdBack, 'undercurl', s:cdRed)
 call <sid>hi('Todo', s:cdNone, s:cdLeftMid, 'none', {})
-
-call <sid>hi('SpellBad', s:cdRed, s:cdBack, 'undercurl', s:cdRed)
-call <sid>hi('SpellCap', s:cdRed, s:cdBack, 'undercurl', s:cdRed)
-call <sid>hi('SpellRare', s:cdRed, s:cdBack, 'undercurl', s:cdRed)
-call <sid>hi('SpellLocal', s:cdRed, s:cdBack, 'undercurl', s:cdRed)
 
 " Markdown:
 call <sid>hi('markdownBold', s:cdBlue, {}, 'bold', {})
@@ -444,15 +440,15 @@ call <sid>hi('yamlConstant', s:cdBlue, {}, 'none', {})
 
 " GitGutter:
 " The entries 'gui', and 'cterm' are not used with Terminal.
-call <sid>hi('GitGutterAdd', { 'gui': 2, 'cterm': 2, 'cterm256': 2 }, {}, 'none', {})
-call <sid>hi('GitGutterChange', { 'gui': 3, 'cterm': 3, 'cterm256': 3 }, {}, 'none', {})
-call <sid>hi('GitGutterDelete', { 'gui': 1, 'cterm': 1, 'cterm256': 1 }, {}, 'none', {})
+call <sid>hi('GitGutterAdd', s:cdDiffGreen, {}, 'none', {})
+call <sid>hi('GitGutterChange', s:cdYellowOrange , {}, 'none', {})
+call <sid>hi('GitGutterDelete', s:cdDiffRedLight, {}, 'none', {})
 
 " Statusline:
-call <sid>hi('SlFileName', s:cdNonText, s:cdBack, 'none', {})
-call <sid>hi('SlSeparator', s:cdLineNumber, {}, 'bold', {})
 call <sid>hi('SlGitBranch', s:cdYellowOrange, s:cdBack, 'none', {})
+call <sid>hi('SlFileName', s:cdNonText, s:cdBack, 'none', {})
 call <sid>hi('SlLocationInFile', s:cdLineNumber, s:cdBack, 'none', {})
+call <sid>hi('SlSeparator', s:cdLineNumber, {}, 'bold', {})
 call <sid>hi('SlTail', s:cdNonText, s:cdBack, 'none', {})
 
 " C++:
