@@ -112,9 +112,10 @@ endif
 
 let s:cdGray = {'gui': '#808080', 'cterm': s:cterm04, 'cterm256': '08'}
 let s:cdViolet = {'gui': '#646695', 'cterm': s:cterm04, 'cterm256': '60'}
-let s:cdBlue = {'gui': '#569CD6', 'cterm': s:cterm0D, 'cterm256': '75'}
-let s:cdDarkBlue = {'gui': '#223E55', 'cterm': s:cterm0D, 'cterm256': '73'}
-let s:cdLightBlue = {'gui': '#9CDCFE', 'cterm': s:cterm0C, 'cterm256': '117'}
+let s:cdDarkBlue = {'gui': '#223E55', 'cterm': s:cterm0D, 'cterm256': '57'}
+let s:cdBlue = {'gui': '#569CD6', 'cterm': s:cterm0D, 'cterm256': '105'}
+let s:cdLighterBlue = {'gui': '#569CD6', 'cterm': s:cterm0D, 'cterm256': '141'}
+let s:cdLightBlue = {'gui': '#9CDCFE', 'cterm': s:cterm0C, 'cterm256': '153'}
 if g:codedark_conservative | let s:cdLightBlue = s:cdFront | endif
 let s:cdGreen = {'gui': '#608B4E', 'cterm': s:cterm0B, 'cterm256': '65'}
 let s:cdBlueGreen = {'gui': '#4EC9B0', 'cterm': s:cterm0F, 'cterm256': '36'}
@@ -178,7 +179,7 @@ call <sid>hi('WildMenu', s:cdNone, s:cdSelection, 'none', {})
 
 call <sid>hi('Comment', s:cdGreen, {}, 'none', {})
 
-call <sid>hi('Constant', s:cdBlue, {}, 'none', {})
+call <sid>hi('Constant', s:cdLighterBlue, {}, 'none', {})
 call <sid>hi('String', s:cdOrange, {}, 'none', {})
 call <sid>hi('Character', s:cdOrange, {}, 'none', {})
 call <sid>hi('Number', s:cdLightGreen, {}, 'none', {})
@@ -452,13 +453,19 @@ call <sid>hi('SlSeparator', s:cdLineNumber, {}, 'bold', {})
 call <sid>hi('SlTail', s:cdNonText, s:cdBack, 'none', {})
 
 " C++:
-call <sid>hi('CTagsClass', s:cdBlueGreen, {}, 'none', {})
-call <sid>hi('CTagsStructure', s:cdBlueGreen, {}, 'none', {})
-call <sid>hi('CTagsNamespace', s:cdBlueGreen, {}, 'none', {})
-call <sid>hi('CTagsGlobalVariable', s:cdBlueGreen, {}, 'none', {})
-call <sid>hi('CTagsDefinedName ', s:cdBlue, {}, 'none', {})
-highlight def link CTagsFunction Function
+call <sid>hi('CTagsType', s:cdBlueGreen, {}, 'none', {})
+highlight def link CTagsNamespace CTagsType
+highlight def link CTagsClass CTagsType
+highlight def link CTagsStructure CTagsType
+highlight def link CTagsEnumerationName CTagsType
+highlight def link CTagsUnion CTagsType
+highlight def link CTagsGlobalVariable Identifier
+highlight def link CTagsLocalVariable Identifier
 highlight def link CTagsMember Identifier
+highlight def link CTagsFunction Function
+highlight def link CTagsConstant Constant
+highlight def link CTagsEnumerationValue CTagsConstant
+highlight def link CTagsDefinedName CTagsConstant
 
 " Diff:
 " Diff* highlights are defined by the colorscheme but the syntax file diff.vim
