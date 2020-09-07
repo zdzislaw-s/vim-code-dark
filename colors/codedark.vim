@@ -101,7 +101,7 @@ let s:cdDiffGreenLight = {'gui': '#4B5632', 'cterm': s:cterm09, 'cterm256': '40'
 let s:cdDiffGreen = {'gui': '#373D29', 'cterm': s:cterm0B, 'cterm256': '34'}
 let s:cdDiffRed = {'gui': '#4B1818', 'cterm': s:cterm08, 'cterm256': '124'}
 
-let s:cdSearchCurrent = {'gui': '#4B5632', 'cterm': s:cterm09, 'cterm256': '58'}
+let s:cdSearchCurrent = {'gui': '#4B5632', 'cterm': s:cterm09, 'cterm256': '58'} 
 let s:cdSearch = {'gui': '#264F78', 'cterm': s:cterm03, 'cterm256': '24'}
 
 " Syntax colors:
@@ -118,7 +118,7 @@ let s:cdLightBlue = {'gui': '#9CDCFE', 'cterm': s:cterm0C, 'cterm256': '153'}
 let s:cdLighterBlue = {'gui': '#569CD6', 'cterm': s:cterm0D, 'cterm256': '141'}
 if g:codedark_conservative | let s:cdLightBlue = s:cdFront | endif
 let s:cdGreen = {'gui': '#6A9955', 'cterm': s:cterm0B, 'cterm256': '65'}
-let s:cdBlueGreen = {'gui': '#4EC9B0', 'cterm': s:cterm0F, 'cterm256': '36'}
+let s:cdBlueGreen = {'gui': '#4EC9B0', 'cterm': s:cterm0F, 'cterm256': '43'}
 let s:cdLightGreen = {'gui': '#B5CEA8', 'cterm': s:cterm09, 'cterm256': '151'}
 let s:cdRed = {'gui': '#F44747', 'cterm': s:cterm08, 'cterm256': '203'}
 let s:cdOrange = {'gui': '#CE9178', 'cterm': s:cterm0F, 'cterm256': '173'}
@@ -204,7 +204,7 @@ call <sid>hi('StorageClass', s:cdBlue, {}, 'none', {})
 call <sid>hi('Structure', s:cdBlue, {}, 'none', {})
 call <sid>hi('Typedef', s:cdBlue, {}, 'none', {})
 
-call <sid>hi('Special', s:cdFront, {}, 'none', {})
+call <sid>hi('Special', s:cdYellowOrange, {}, 'none', {})
 call <sid>hi('SpecialChar', s:cdFront, {}, 'none', {})
 call <sid>hi('Tag', s:cdFront, {}, 'none', {})
 call <sid>hi('Delimiter', s:cdFront, {}, 'none', {})
@@ -219,10 +219,11 @@ call <sid>hi('Ignore', s:cdFront, {}, 'none', {})
 call <sid>hi('Error', s:cdRed, s:cdBack, 'undercurl', s:cdRed)
 call <sid>hi('Todo', s:cdNone, s:cdLeftMid, 'none', {})
 
-call <sid>hi('SpellBad', s:cdRed, s:cdBack, 'underline', {})
-call <sid>hi('SpellCap', s:cdRed, s:cdBack, 'underline', {})
-call <sid>hi('SpellRare', s:cdOrange, s:cdBack, 'underline', {})
-call <sid>hi('SpellLocal', s:cdOrange, s:cdBack, 'underline', {})
+call <sid>hi('SpellBad', s:cdRed, s:cdBack, 'undercurl', s:cdRed)
+call <sid>hi('SpellCap', s:cdRed, s:cdBack, 'undercurl', s:cdRed)
+call <sid>hi('SpellRare', s:cdRed, s:cdBack, 'undercurl', s:cdRed)
+call <sid>hi('SpellLocal', s:cdRed, s:cdBack, 'undercurl', s:cdRed)
+
 " Markdown:
 call <sid>hi('markdownBold', s:cdBlue, {}, 'bold', {})
 call <sid>hi('markdownCode', s:cdOrange, {}, 'none', {})
@@ -465,39 +466,3 @@ call <sid>hi('sqlOperator', s:cdPink, {}, 'none', {})
 call <sid>hi('yamlKey', s:cdBlue, {}, 'none', {})
 call <sid>hi('yamlConstant', s:cdBlue, {}, 'none', {})
 
-" GitGutter:
-" The entries 'gui', and 'cterm' are not used with Terminal.
-call <sid>hi('GitGutterAdd', s:cdDiffGreen, {}, 'none', {})
-call <sid>hi('GitGutterChange', s:cdYellowOrange , {}, 'none', {})
-call <sid>hi('GitGutterDelete', s:cdDiffRedLight, {}, 'none', {})
-
-" Statusline:
-call <sid>hi('SlGitBranch', s:cdYellowOrange, s:cdBack, 'none', {})
-call <sid>hi('SlFileName', s:cdNonText, s:cdBack, 'none', {})
-call <sid>hi('SlLocationInFile', s:cdLineNumber, s:cdBack, 'none', {})
-call <sid>hi('SlSeparator', s:cdLineNumber, {}, 'bold', {})
-call <sid>hi('SlTail', s:cdNonText, s:cdBack, 'none', {})
-
-" C++:
-call <sid>hi('CTagsType', s:cdBlueGreen, {}, 'none', {})
-highlight def link CTagsNamespace CTagsType
-highlight def link CTagsClass CTagsType
-highlight def link CTagsStructure CTagsType
-highlight def link CTagsEnumerationName CTagsType
-highlight def link CTagsUnion CTagsType
-highlight def link CTagsGlobalVariable Identifier
-highlight def link CTagsLocalVariable Identifier
-highlight def link CTagsMember Identifier
-highlight def link CTagsFunction Function
-highlight def link CTagsConstant Constant
-highlight def link CTagsEnumerationValue CTagsConstant
-highlight def link CTagsDefinedName CTagsConstant
-
-" Diff:
-" Diff* highlights are defined by the colorscheme but the syntax file diff.vim
-" adds its own diff* highlights, try to link them together. The ones below are
-" not everything that diff.vim specifies but I did't see the others "in action"
-" yet.
-highlight def link diffAdded DiffAdd
-highlight def link diffChanged DiffChange
-highlight def link diffRemoved DiffDelete
