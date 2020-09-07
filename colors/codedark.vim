@@ -94,12 +94,12 @@ let s:cdNonText = {'gui': '#5A5A5A', 'cterm': s:cterm04, 'cterm256': '71'}
 let s:cdLineNumber = {'gui': '#5A5A5A', 'cterm': s:cterm04, 'cterm256': '240'}
 
 let s:cdDiffRedDark = {'gui': '#4B1818', 'cterm': s:cterm08, 'cterm256': '88'}
-let s:cdDiffRed = {'gui': '#4B1818', 'cterm': s:cterm08, 'cterm256': '124'}
 let s:cdDiffRedLight = {'gui': '#6F1313', 'cterm': s:cterm08, 'cterm256': '160'}
 let s:cdDiffRedLightLight = {'gui': '#FB0101', 'cterm': s:cterm08, 'cterm256': '196'}
+let s:cdDiffGreenDark = {'gui': '#373D29', 'cterm': s:cterm0B, 'cterm256': '28'}
 let s:cdDiffGreenLight = {'gui': '#4B5632', 'cterm': s:cterm09, 'cterm256': '40'}
 let s:cdDiffGreen = {'gui': '#373D29', 'cterm': s:cterm0B, 'cterm256': '34'}
-let s:cdDiffGreenDark = {'gui': '#373D29', 'cterm': s:cterm0B, 'cterm256': '28'}
+let s:cdDiffRed = {'gui': '#4B1818', 'cterm': s:cterm08, 'cterm256': '124'}
 
 let s:cdSearchCurrent = {'gui': '#4B5632', 'cterm': s:cterm09, 'cterm256': '58'}
 let s:cdSearch = {'gui': '#264F78', 'cterm': s:cterm03, 'cterm256': '24'}
@@ -112,12 +112,12 @@ endif
 
 let s:cdGray = {'gui': '#808080', 'cterm': s:cterm04, 'cterm256': '08'}
 let s:cdViolet = {'gui': '#646695', 'cterm': s:cterm04, 'cterm256': '60'}
-let s:cdDarkBlue = {'gui': '#223E55', 'cterm': s:cterm0D, 'cterm256': '57'}
 let s:cdBlue = {'gui': '#569CD6', 'cterm': s:cterm0D, 'cterm256': '105'}
-let s:cdLighterBlue = {'gui': '#569CD6', 'cterm': s:cterm0D, 'cterm256': '141'}
+let s:cdDarkBlue = {'gui': '#223E55', 'cterm': s:cterm0D, 'cterm256': '57'}
 let s:cdLightBlue = {'gui': '#9CDCFE', 'cterm': s:cterm0C, 'cterm256': '153'}
+let s:cdLighterBlue = {'gui': '#569CD6', 'cterm': s:cterm0D, 'cterm256': '141'}
 if g:codedark_conservative | let s:cdLightBlue = s:cdFront | endif
-let s:cdGreen = {'gui': '#608B4E', 'cterm': s:cterm0B, 'cterm256': '65'}
+let s:cdGreen = {'gui': '#6A9955', 'cterm': s:cterm0B, 'cterm256': '65'}
 let s:cdBlueGreen = {'gui': '#4EC9B0', 'cterm': s:cterm0F, 'cterm256': '36'}
 let s:cdLightGreen = {'gui': '#B5CEA8', 'cterm': s:cterm09, 'cterm256': '151'}
 let s:cdRed = {'gui': '#F44747', 'cterm': s:cterm08, 'cterm256': '203'}
@@ -162,10 +162,6 @@ call <sid>hi('PmenuThumb', {}, s:cdPopupFront, 'none', {})
 call <sid>hi('Question', s:cdBlue, s:cdBack, 'none', {})
 call <sid>hi('Search', s:cdNone, s:cdSearch, 'none', {})
 call <sid>hi('SpecialKey', s:cdBlue, s:cdNone, 'none', {})
-call <sid>hi('SpellBad', s:cdRed, s:cdBack, 'underline', {})
-call <sid>hi('SpellCap', s:cdRed, s:cdBack, 'underline', {})
-call <sid>hi('SpellRare', s:cdOrange, s:cdBack, 'underline', {})
-call <sid>hi('SpellLocal', s:cdOrange, s:cdBack, 'underline', {})
 call <sid>hi('StatusLine', s:cdFront, s:cdLeftMid, 'none', {})
 call <sid>hi('StatusLineNC', s:cdFront, s:cdLeftDark, 'none', {})
 call <sid>hi('TabLine', s:cdFront, s:cdTabOther, 'none', {})
@@ -223,6 +219,10 @@ call <sid>hi('Ignore', s:cdFront, {}, 'none', {})
 call <sid>hi('Error', s:cdRed, s:cdBack, 'undercurl', s:cdRed)
 call <sid>hi('Todo', s:cdNone, s:cdLeftMid, 'none', {})
 
+call <sid>hi('SpellBad', s:cdRed, s:cdBack, 'underline', {})
+call <sid>hi('SpellCap', s:cdRed, s:cdBack, 'underline', {})
+call <sid>hi('SpellRare', s:cdOrange, s:cdBack, 'underline', {})
+call <sid>hi('SpellLocal', s:cdOrange, s:cdBack, 'underline', {})
 " Markdown:
 call <sid>hi('markdownBold', s:cdBlue, {}, 'bold', {})
 call <sid>hi('markdownCode', s:cdOrange, {}, 'none', {})
@@ -248,6 +248,16 @@ call <sid>hi('htmlTagName', s:cdBlue, {}, 'none', {})
 call <sid>hi('htmlSpecialTagName', s:cdBlue, {}, 'none', {})
 call <sid>hi('htmlArg', s:cdLightBlue, {}, 'none', {})
 
+" PHP:
+call <sid>hi('phpStaticClasses', s:cdBlueGreen, {}, 'none', {})
+call <sid>hi('phpMethod', s:cdYellow, {}, 'none', {})
+call <sid>hi('phpClass', s:cdBlueGreen, {}, 'none', {})
+call <sid>hi('phpFunction', s:cdYellow, {}, 'none', {})
+call <sid>hi('phpInclude', s:cdBlue, {}, 'none', {})
+call <sid>hi('phpUseClass', s:cdBlueGreen, {}, 'none', {})
+call <sid>hi('phpRegion', s:cdBlueGreen, {}, 'none', {})
+call <sid>hi('phpMethodsVar', s:cdLightBlue, {}, 'none', {})
+
 " CSS:
 call <sid>hi('cssBraces', s:cdFront, {}, 'none', {})
 call <sid>hi('cssInclude', s:cdPink, {}, 'none', {})
@@ -268,10 +278,13 @@ call <sid>hi('cssVendor', s:cdOrange, {}, 'none', {})
 call <sid>hi('cssValueNumber', s:cdOrange, {}, 'none', {})
 call <sid>hi('cssValueLength', s:cdOrange, {}, 'none', {})
 call <sid>hi('cssUnitDecorators', s:cdOrange, {}, 'none', {})
+call <sid>hi('cssStyle', s:cdLightBlue, {}, 'none', {})
+call <sid>hi('cssImportant', s:cdBlue, {}, 'none', {})
 
 " JavaScript:
 call <sid>hi('jsVariableDef', s:cdLightBlue, {}, 'none', {})
 call <sid>hi('jsFuncArgs', s:cdLightBlue, {}, 'none', {})
+call <sid>hi('jsFuncBlock', s:cdLightBlue, {}, 'none', {})
 call <sid>hi('jsRegexpString', s:cdLightRed, {}, 'none', {})
 call <sid>hi('jsThis', s:cdBlue, {}, 'none', {})
 call <sid>hi('jsOperatorKeyword', s:cdBlue, {}, 'none', {})
@@ -287,6 +300,10 @@ call <sid>hi('jsFuncCall', s:cdYellow, {}, 'none', {})
 call <sid>hi('jsObjectValue', s:cdLightBlue, {}, 'none', {})
 call <sid>hi('jsParen', s:cdLightBlue, {}, 'none', {})
 call <sid>hi('jsObjectProp', s:cdLightBlue, {}, 'none', {})
+call <sid>hi('jsIfElseBlock', s:cdLightBlue, {}, 'none', {})
+call <sid>hi('jsParenIfElse', s:cdLightBlue, {}, 'none', {})
+call <sid>hi('jsSpreadOperator', s:cdLightBlue, {}, 'none', {})
+call <sid>hi('jsSpreadExpression', s:cdLightBlue, {}, 'none', {})
 
 " Typescript:
 call <sid>hi('typescriptLabel', s:cdLightBlue, {}, 'none', {})
@@ -434,6 +451,15 @@ call <sid>hi('luaFuncArgName', s:cdLightBlue, {}, 'none', {})
 call <sid>hi('luaFuncKeyword', s:cdPink, {}, 'none', {})
 call <sid>hi('luaLocal', s:cdPink, {}, 'none', {})
 call <sid>hi('luaBuiltIn', s:cdBlue, {}, 'none', {})
+
+" SH:
+call <sid>hi('shDeref', s:cdLightBlue, {}, 'none', {})
+call <sid>hi('shVariable', s:cdLightBlue, {}, 'none', {})
+
+" SQL:
+call <sid>hi('sqlKeyword', s:cdPink, {}, 'none', {})
+call <sid>hi('sqlFunction', s:cdYellowOrange, {}, 'none', {})
+call <sid>hi('sqlOperator', s:cdPink, {}, 'none', {})
 
 " YAML:
 call <sid>hi('yamlKey', s:cdBlue, {}, 'none', {})
